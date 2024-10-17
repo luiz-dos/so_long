@@ -1,48 +1,45 @@
-NAME 		= libft.a
-CFLAGS		= -Wall -Wextra -Werror -I../include
-CC			= cc
-RM			= rm -f
-CREATE		= ar rc
-INDEXLIB	= ranlib
-SRCS		= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
-				ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
-				ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
-				ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
-				ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c \
-				ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
-				ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c \
-				ft_substr.c ft_tolower.c ft_toupper.c ft_lstadd_front.c \
-				ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_lstadd_back.c \
-				ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-				analyze_identifier.c decimal_to_hex.c ft_unsigned_itoa.c \
-				handle_conversion.c handle_field_width.c handle_flag.c \
-				handle_precision.c init.c print_char.c print_fzero.c \
-				print_hex_two.c print_hex.c print_int_three.c print_int_two.c \
-				print_int.c print_pointer.c print_specifier.c print_string.c \
-				print_unsigned_int.c ft_putstr_reverse_fd.c get_whitespace.c \
-				isconversion.c isflag.c print_flag.c ft_printf.c \
-				get_next_line.c get_next_line_utils.c
+NAME	= so_long
+LIB		= so_long.a
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror -I../include
+RM		= rm -f
+CREATE	= ar rcs
+LIBFT	= libft
+MLX		= minilibx-linux
+MLX_URL = https://cdn.intra.42.fr/document/document/27192/minilibx-linux.tgz
+SRCS	= check_map.c create_map.c destroy_images.c end_screen.c error.c flood_fill.c \
+			free_exit.c get_map_info.c key_press.c load_game.c move_enemies.c moves.c \
+			so_long.c update_game.c utils.c 
+OBJS	= ${SRCS:.c=.o}
 
+all: ${NAME}
 
-OBJS		= ${SRCS:.c=.o}
+${NAME}: ${MLX} ${LIB} 
+	make -C ${LIBFT}
+	${CC} ${CFLAGS} ${OBJS} -L./${LIBFT} -L./${MLX} -lft -lmlx_Linux -lXext -lX11 -o $@
+
+${LIB}: ${OBJS}
+	${CREATE} ${LIB} $^
+
+${MLX}:
+	wget ${MLX_URL} -O minilibx-linux.tgz
+	tar -xvzf minilibx-linux.tgz
+	${RM} minilibx-linux.tgz
+	make -C ${MLX}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}: ${OBJS}
-		${CREATE} ${NAME} ${OBJS}
-		${INDEXLIB} ${NAME}
-
-all: ${NAME}
-
 clean:
+	make clean -C ${LIBFT}
 	${RM} ${OBJS}
 
 fclean: clean
+	make fclean -C ${LIBFT}
+	${RM} ${LIB}
 	${RM} ${NAME}
-
-bonus: all
+	rm -rf ${MLX}
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re , bonus
+.PHONY: all clean fclean re
