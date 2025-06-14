@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_printf("Usage: ./so_long <map_file.ber>\n");
+		ft_printf("Usage: ./so_long <maps/map_file.ber>\n");
 		return (1);
 	}
 	ft_bzero(&data, sizeof(data));
