@@ -36,6 +36,7 @@ fclean: clean
 	make fclean -C ${LIBFT}
 	${RM} ${LIB}
 	${RM} ${NAME}
+	rm -rf ${MLX}
 
 re: fclean all
 
