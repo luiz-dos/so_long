@@ -6,12 +6,14 @@
   <img src="img/game.png" width="700">
 </p>
 
-**Victory screen** 
+<p align="center">Victory screen</p>
+
 <p align="center">
   <img src="img/you_win.png" width="700">
 </p>
 
-**Defeat screen** 
+<p align="center">Defeat screen</p>
+
 <p align="center">
   <img src="img/game_over.png" width="700">
 </p>
