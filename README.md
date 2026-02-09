@@ -1,8 +1,7 @@
 # 🎮 so_long
 
-**Game running** 
-
 <p align="center">
+  **Game running** 
   <img src="img/game.png" width="700">
 </p>
 
