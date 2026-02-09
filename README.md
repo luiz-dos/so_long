@@ -1,5 +1,21 @@
 # 🎮 so_long
 
+**Game running** 
+
+<p align="center">
+  <img src="img/game.png" width="700">
+</p>
+
+**Victory screen** 
+<p align="center">
+  <img src="img/you_win.png" width="700">
+</p>
+
+**Defeat screen** 
+<p align="center">
+  <img src="img/game_over.png" width="700">
+</p>
+
 **Description**  
 2D tile-based game where the player collects items, avoids enemies, and reaches the exit on a given map.
 
